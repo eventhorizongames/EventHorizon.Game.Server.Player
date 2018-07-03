@@ -10,17 +10,20 @@
 </head>
 
 <body>
-    <input id="access-token" type="text" /> <button id="start-connection">Start Connection</button>
+    <button id="login">Login</button>
+    <button id="logout">Logout</button>
     <hr />
     <textarea id="send-data"></textarea>
     <br />
     <button id="send-action">Send Action</button>
     <hr />
-    <pre id="zone-info"></pre>
+    <pre id="action-details"></pre>
     <hr />
-    <ul id="action-received"></ul>
+    <pre id="results"></pre>
 
     <script src="lib/signalr/signalr.min.js"></script>
+    <script src="lib/oidc/oidc-client.min.js"></script>
+    
     <script src="js/dashboard.js"></script>
 </body>
 

@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/EventHorizon.Game.Server.Zone.csproj"
+                "${workspaceFolder}/EventHorizon.Game.Server.Player.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

@@ -1,29 +1,59 @@
+const config = {
+    authority: "https://auth.identity.projecteventhorizon.com",
+    client_id: "monster_game_demo",
+    redirect_uri: "http://localhost:5083/callback.html",
+    response_type: "id_token token",
+    scope: "openid profile Api.Player",
+    post_logout_redirect_uri: "http://localhost:5083/dashboard.html",
+};
+const oidcManager = new Oidc.UserManager(config);
+
 (function () {
-    document.getElementById("start-connection")
-        .addEventListener("click", () => {
-            const connection = new signalR.HubConnectionBuilder()
-                .withUrl("/playerHub", {
-                    accessTokenFactory: () => document.getElementById("access-token").value,
-                })
-                .configureLogging(signalR.LogLevel.Information)
-                .build();
-            connection.on("ZoneInfo", (zoneInfo) => {
-                console.log("Zone Info: ", zoneInfo);
-                document.getElementById("zone-info").innerText = "Zone Info Received: Check Dev Console for info.";
-            });
-            connection.on("ReceiveAction", (event, eventData) => {
-                const action = event + " of: " + eventData;
-                const li = document.createElement("li");
-                li.textContent = encodedMsg;
-                document.getElementById("action-received").appendChild(li);
-            });
-            connection.start().catch(err => console.error(err.toString()));
+    document.getElementById("login").addEventListener("click", login, false);
+    document.getElementById("logout").addEventListener("click", logout, false);
+
+
+    function login() {
+        oidcManager.signinRedirect();
+    }
+
+    function checkLogin() {
+        oidcManager.getUser().then(function (user) {
+            if (user) {
+                log("User logged in", user.profile);
+            } else {
+                log("User not logged in");
+            }
+        });
+    }
+
+    checkLogin();
+
+    get("/config")
+        .then(response => {
+            log(response.responseText);
         });
 
-    document.getElementById("send-action")
-        .addEventListener("click", () => {
-            connection
-                .invoke("SendMessage", user, message)
-                .catch(err => console.error(err.toString()));
-        });
+    function get(url) {
+        return new Promise((resolve, reject) => {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
+            xhr.onload = function () {
+                resolve(xhr);
+            }
+            // xhr.setRequestHeader("Authorization", "Bearer " + user.access_token);
+            xhr.send();
+        })
+    }
 })();
+
+function log() {
+    Array.prototype.forEach.call(arguments, function (message) {
+        if (message instanceof Error) {
+            message = "Error: " + message.message;
+        } else if (typeof message !== 'string') {
+            message = JSON.stringify(message, null, 2);
+        }
+        document.getElementById('results').innerHTML += message + '\r\n';
+    });
+}
