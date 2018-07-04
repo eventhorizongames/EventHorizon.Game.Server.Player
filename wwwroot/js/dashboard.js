@@ -1,12 +1,14 @@
 const config = {
-    authority: "https://auth.identity.projecteventhorizon.com",
-    client_id: "monster_game_demo",
-    redirect_uri: "http://localhost:5083/callback.html",
+    authority: "",
+    client_id: "",
+    scope: "",
+
     response_type: "id_token token",
-    scope: "openid profile Api.Player",
+    redirect_uri: "http://localhost:5083/callback.html",
     post_logout_redirect_uri: "http://localhost:5083/dashboard.html",
 };
-const oidcManager = new Oidc.UserManager(config);
+let oidcManager = undefined;
+let user = undefined;
 
 (function () {
     document.getElementById("login").addEventListener("click", login, false);
@@ -14,24 +16,47 @@ const oidcManager = new Oidc.UserManager(config);
 
 
     function login() {
+        if (!oidcManager) {
+            log(new Error("Open ID Manager Not Created."))
+            return;
+        }
         oidcManager.signinRedirect();
     }
 
+    function logout() {
+        if (!oidcManager) {
+            log(new Error("Open ID Manager Not Created."))
+            return;
+        }
+        oidcManager.signoutRedirect();
+    }
+
     function checkLogin() {
-        oidcManager.getUser().then(function (user) {
-            if (user) {
-                log("User logged in", user.profile);
+        if (!oidcManager) {
+            log(new Error("Open ID Manager Not Created."))
+            return;
+        }
+        oidcManager.getUser().then((oIdUser) => {
+            if (oIdUser) {
+                user = oIdUser;
+                log("User logged in", user);
             } else {
                 log("User not logged in");
             }
         });
     }
 
-    checkLogin();
-
     get("/config")
         .then(response => {
-            log(response.responseText);
+            let responseConfig = JSON.parse(response.responseText);
+            log("Configuration", responseConfig);
+
+            config["authority"] = responseConfig["auth"]["server"];
+            config["client_id"] = responseConfig["auth"]["clientId"];
+            config["scope"] = "openid profile " + responseConfig["auth"]["apiName"];
+
+            oidcManager = new Oidc.UserManager(config);
+            checkLogin();
         });
 
     function get(url) {
@@ -41,10 +66,16 @@ const oidcManager = new Oidc.UserManager(config);
             xhr.onload = function () {
                 resolve(xhr);
             }
-            // xhr.setRequestHeader("Authorization", "Bearer " + user.access_token);
+            if (user) {
+                xhr.setRequestHeader("Authorization", "Bearer " + user.access_token);
+            }
             xhr.send();
         })
     }
+
+    window["action-data-editor"] = monaco.editor.create(document.getElementById('send-data'), {
+        language: 'json'
+    });
 })();
 
 function log() {

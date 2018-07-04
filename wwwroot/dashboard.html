@@ -7,13 +7,24 @@
     <title>Player Server - Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/dashboard.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.13.1/min/vs/editor/editor.main.css"
+    />
 </head>
 
 <body>
     <button id="login">Login</button>
     <button id="logout">Logout</button>
     <hr />
-    <textarea id="send-data"></textarea>
+
+    <button id="start-connection">Start Connection</button>
+    <hr />
+    <select id="selected-action">
+        <option value="GetPlayer">Get Player</option>
+        <option value="UpdatePlayer">Update Player</option>
+    </select>
+    <hr />
+    <div id="send-data" style="width:800px;height:600px;border:1px solid grey"></div>
+    <br />
     <br />
     <button id="send-action">Send Action</button>
     <hr />
@@ -21,10 +32,25 @@
     <hr />
     <pre id="results"></pre>
 
+
     <script src="lib/signalr/signalr.min.js"></script>
     <script src="lib/oidc/oidc-client.min.js"></script>
-    
+
+    <script>
+        var require = {
+            paths: {
+                'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.13.1/min/vs'
+            }
+        };
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.13.1/min/vs/loader.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.13.1/min/vs/editor/editor.main.nls.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.13.1/min/vs/editor/editor.main.js"></script>
+
     <script src="js/dashboard.js"></script>
+    <script src="js/signalr-setup.js"></script>
 </body>
 
 </html>

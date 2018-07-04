@@ -2,13 +2,13 @@
     document.getElementById("start-connection")
         .addEventListener("click", () => {
             const connection = new signalR.HubConnectionBuilder()
-                .withUrl("/playerHub", {
-                    accessTokenFactory: () => document.getElementById("access-token").value,
+                .withUrl("/playerBus", {
+                    accessTokenFactory: () => user.access_token,
                 })
                 .configureLogging(signalR.LogLevel.Information)
                 .build();
             connection.on("ZoneInfo", (zoneInfo) => {
-                console.log("Zone Info: ", zoneInfo);
+                log("Zone Info: ", zoneInfo);
                 document.getElementById("zone-info").innerText = "Zone Info Received: Check Dev Console for info.";
             });
             connection.on("ReceiveAction", (event, eventData) => {
@@ -17,27 +17,30 @@
                 li.textContent = encodedMsg;
                 document.getElementById("action-received").appendChild(li);
             });
-            connection.start().catch(err => logError(err.toString()));
-        });
+            connection.start()
+                .then(_ => log("Connected to Player Bus."))
+                .catch(err => log(err));
 
-    document.getElementById("send-action")
-        .addEventListener("click", () => {
-            connection
-                .invoke("SendMessage", user, message)
-                .catch(err => logError(err.toString()));
+            document.getElementById("send-action")
+                .addEventListener("click", _ => {
+                    const selectedAction = document.getElementById("selected-action").value;
+                    if (selectedAction === "GetPlayer") {
+                        connection
+                            .invoke("GetPlayer", user.profile.sub)
+                            .then(response => log("Get Player Response", response))
+                            .catch(err => log(err));
+                    } else if (selectedAction === "UpdatePlayer") {
+                        const data = JSON.parse(window["action-data-editor"].getValue());
+                        console.log(data);
+                        data.id = user.profile.sub;
+                        connection
+                            .invoke("UpdatePlayer", data)
+                            .then(response => log("Update Player Response", response))
+                            .catch(err => log(err));
+                    } else {
+                        log("No Action Available");
+                    }
+                });
         });
 
 })();
-
-function log() {
-    document.getElementById("results").innerText = "";
-
-    Array.prototype.forEach.call(arguments, function (message) {
-        if (msg instanceof Error) {
-            msg = "Error: " + msg.message;
-        } else if (typeof msg !== 'string') {
-            msg = JSON.stringify(msg, null, 2);
-        }
-        document.getElementById('results').innerHTML += msg + '\r\n';
-    });
-}

@@ -17,8 +17,12 @@ namespace EventHorizon.Game.Server.Player.Controllers
         {
             return new Config
             {
-                AuthServer = _configuration["Auth:Authority"],
-                AuthClientId = _configuration["Auth:ClientId"],
+                Auth = new AuthConfig
+                {
+                    Server = _configuration["Auth:Authority"],
+                    ClientId = _configuration["Auth:ClientId"],
+                    ApiName = _configuration["Auth:ApiName"],
+                }
             };
         }
     }
