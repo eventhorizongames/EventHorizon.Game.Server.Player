@@ -1,12 +1,13 @@
 import { UserManager } from "oidc-client";
+const hostUrl = `${window.location.protocol}//${window.location.hostname}`;
 const config = {
     authority: "",
     client_id: "",
     scope: "",
 
     response_type: "id_token token",
-    redirect_uri: "http://localhost:5083/callback.html",
-    post_logout_redirect_uri: "http://localhost:5083/dashboard.html"
+    redirect_uri: `${hostUrl}/callback.html`,
+    post_logout_redirect_uri: `${hostUrl}/dashboard.html`
 };
 export class UserLogin {
     static OCID_MANAGER: UserManager;
