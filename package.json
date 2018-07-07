@@ -1,0 +1,50 @@
+{
+  "name": "event_horizon_game_server_player",
+  "description": "EventHorizon Game Player Server",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git"
+  },
+  "version": "0.0.0",
+  "scripts": {
+    "webpack": "webpack --config webpack.config.js",
+    "webpack:watch": "webpack --watch --config webpack.config.js",
+    "webpack:prod": "webpack --config webpack.config.js --env.prod",
+    "webpack:vendor": "webpack --config webpack.config.vendor.js",
+    "webpack:vendor:prod": "webpack --config webpack.config.vendor.js --env.prod"
+  },
+  "dependencies": {
+    "oidc-client": "^1.5.2-beta.3"
+  },
+  "devDependencies": {
+    "@aspnet/signalr": "^1.0.0",
+    "@types/react": "16.3.10",
+    "@types/react-dom": "16.0.5",
+    "@types/react-hot-loader": "3.0.6",
+    "@types/react-router-dom": "^4.2.6",
+    "@types/react-test-renderer": "^16.0.1",
+    "@types/webpack-env": "1.13.6",
+    "aspnet-webpack": "^2.0.3",
+    "aspnet-webpack-react": "^3.0.0",
+    "awesome-typescript-loader": "3.5.0",
+    "css-loader": "0.28.11",
+    "event-source-polyfill": "0.0.12",
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "1.1.11",
+    "ignore-loader": "^0.1.2",
+    "isomorphic-fetch": "2.2.1",
+    "json-loader": "0.5.7",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-hot-loader": "3.1.3",
+    "react-router-dom": "^4.2.2",
+    "react-test-renderer": "^16.3.1",
+    "style-loader": "0.20.3",
+    "tslib": "^1.9.2",
+    "typescript": "2.8.1",
+    "typescript-ioc": "^1.2.2",
+    "url-loader": "1.0.1",
+    "webpack": "3.10.0",
+    "webpack-hot-middleware": "2.21.2"
+  }
+}

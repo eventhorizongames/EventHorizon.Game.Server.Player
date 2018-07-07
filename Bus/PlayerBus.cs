@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using EventHorizon.Game.Server.Player.Get;
 using EventHorizon.Game.Server.Player.Model;
@@ -22,6 +23,13 @@ namespace EventHorizon.Game.Server.Player.Bus
             return await _mediator.Send(new GetPlayerEvent
             {
                 Id = id,
+            });
+        }
+
+        public async Task<IList<PlayerEntity>> GetAllPlayers()
+        {
+            return await _mediator.Send(new GetAllPlayersEvent
+            {
             });
         }
 
