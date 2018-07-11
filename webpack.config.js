@@ -37,10 +37,12 @@ module.exports = (env) => {
                     use: 'awesome-typescript-loader?silent=true'
                 },
                 {
-                    test: /\.css$/,
-                    use: isDevBuild ? ['style-loader', 'css-loader'] : ExtractTextPlugin.extract({
-                        use: 'css-loader?minimize'
-                    })
+                    test: /\.scss$/,
+                    use: isDevBuild ? ['style-loader', 'css-loader', "sass-loader"] : ExtractTextPlugin.extract([
+                        "style-loader", // creates style nodes from JS strings
+                        "css-loader?minimize", // translates CSS into CommonJS
+                        "sass-loader" // compiles Sass to CSS
+                    ])
                 },
                 {
                     test: /\.js\.map$/,

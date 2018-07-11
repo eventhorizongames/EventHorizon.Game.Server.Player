@@ -1,4 +1,8 @@
-const hostUrl = `${window.location.protocol}//${window.location.hostname}`;
+let hostUrl = `${window.location.protocol}//${window.location.hostname}`;
+if (window.location.hostname === "localhost") {
+    hostUrl += ":";
+    hostUrl += window.location.port;
+}
 const config = {
     authority: "",
     client_id: "",

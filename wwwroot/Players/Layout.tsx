@@ -1,8 +1,9 @@
 import * as React from "react";
-import { PlayerList } from "./PlayerList";
+import { PlayerList } from "./List/PlayerList";
 import { PlayerConnection } from "./Connection/PlayerConnection";
-import { UserLogin } from "./UserLogin";
+import { UserLogin } from "./Login/UserLogin";
 import { Login } from "./Login/Login";
+import "./Layout.scss";
 
 class IState {
     loggedIn: boolean;
@@ -23,17 +24,17 @@ export class Application extends React.Component<{}, IState> {
     render() {
         return (
             <div>
-                <h1>Player Dashboard</h1>
+                <h1>Players Dashboard</h1>
                 <Login />
                 {this.state.loggedIn ? (
                     this.state.connected ? (
                         [
-                            <PlayerList />,
                             <button
                                 onClick={this.onPlayerStopConnection.bind(this)}
                             >
                                 Stop Connection
-                            </button>
+                            </button>,
+                            <PlayerList />
                         ]
                     ) : (
                         <button
