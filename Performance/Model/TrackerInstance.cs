@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace EventHorizon.Game.Server.Player.Performance.Model
 {
-    public class TrackerInstance : IDisposable
+    public class TrackerInstance : ITrackerInstance
     {
         readonly ILogger _logger;
         readonly Stopwatch watch;
@@ -14,7 +14,7 @@ namespace EventHorizon.Game.Server.Player.Performance.Model
             _logger.LogInformation("Starting Performance Tracking");
             watch = Stopwatch.StartNew();
         }
-        public void Dispose()
+        public virtual void Dispose()
         {
             watch.Stop();
             _logger.LogInformation("Finished Performance Tracking, took: {0}ms", watch.ElapsedMilliseconds);

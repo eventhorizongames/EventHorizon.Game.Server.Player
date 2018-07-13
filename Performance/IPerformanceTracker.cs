@@ -4,6 +4,6 @@ namespace EventHorizon.Game.Server.Player.Performance
 {
     public interface IPerformanceTracker
     {
-        TrackerInstance Track(string trackerName);
+        ITrackerInstance Track(string trackerName);
     }
 }

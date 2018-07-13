@@ -9,7 +9,7 @@ namespace EventHorizon.Game.Server.Player.State.Schedule
 {
     public class PersistPlayerStateScheduledTask : IScheduledTask
     {
-        public string Schedule => "*/10 * * * * *"; // Every 30 seconds
+        public string Schedule => "*/30 * * * * *"; // Every 30 seconds
         private readonly IServiceScopeFactory _serviceScopeFactory;
 
         public PersistPlayerStateScheduledTask(IServiceScopeFactory serviceScopeFactory)
