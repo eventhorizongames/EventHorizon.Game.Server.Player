@@ -1,3 +1,4 @@
+using System;
 using System.Numerics;
 
 namespace EventHorizon.Game.Server.Player.Model
@@ -14,7 +15,7 @@ namespace EventHorizon.Game.Server.Player.Model
         {
             this.Id = id;
             this.Position = positionState;
-            
+
             this.Data = new { };
         }
     }

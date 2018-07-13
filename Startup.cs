@@ -7,8 +7,11 @@ using System.Runtime.Loader;
 using System.Threading.Tasks;
 using EventHorizon.Game.Server.Player.Bus;
 using EventHorizon.Game.Server.Player.Controllers;
+using EventHorizon.Game.Server.Player.Performance;
+using EventHorizon.Game.Server.Player.Performance.Impl;
 using EventHorizon.Game.Server.Player.State;
 using EventHorizon.Game.Server.Player.State.Impl;
+using EventHorizon.Game.Server.Player.State.Schedule;
 using EventHorizon.Schedule;
 using IdentityModel.AspNetCore.OAuth2Introspection;
 using MediatR;
@@ -81,7 +84,9 @@ namespace EventHorizon.Game.Server.Player
                         .AllowCredentials();
                 }));
 
-            services.AddSingleton<IPlayerRepository, PlayerRepository>();
+            services.AddPlayerState(Configuration);
+
+            services.AddSingleton<IPerformanceTracker, PerformanceTracker>();
 
             services.AddScheduler((sender, args) =>
             {
@@ -93,6 +98,8 @@ namespace EventHorizon.Game.Server.Player
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UsePlayerState();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

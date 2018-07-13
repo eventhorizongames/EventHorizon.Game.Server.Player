@@ -17,7 +17,6 @@ export class PlayerCardData extends React.Component<IProps, IState> {
     componentWillReceiveProps(nextProps: Readonly<IProps>) {
         const properties = [];
         for (const prop in nextProps.player.data) {
-            console.log(prop);
             properties.push({
                 label: prop,
                 value: JSON.stringify(nextProps.player.data[prop])

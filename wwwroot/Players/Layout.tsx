@@ -4,6 +4,7 @@ import { PlayerConnection } from "./Connection/PlayerConnection";
 import { UserLogin } from "./Login/UserLogin";
 import { Login } from "./Login/Login";
 import "./Layout.scss";
+import { TestingPage } from "./Tests/TestingPage";
 
 class IState {
     loggedIn: boolean;
@@ -34,6 +35,7 @@ export class Application extends React.Component<{}, IState> {
                             >
                                 Stop Connection
                             </button>,
+                            <TestingPage />,
                             <PlayerList />
                         ]
                     ) : (

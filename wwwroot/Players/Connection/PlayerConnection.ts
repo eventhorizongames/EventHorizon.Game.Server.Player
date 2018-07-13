@@ -26,6 +26,9 @@ class PlayerConnectionImpl {
     getAllPlayers() {
         return this._connection.invoke("GetAllPlayers");
     }
+    updatePlayer(player: any) {
+        return this._connection.invoke("UpdatePlayer", player);
+    }
 }
 
 export const PlayerConnection = new PlayerConnectionImpl();
