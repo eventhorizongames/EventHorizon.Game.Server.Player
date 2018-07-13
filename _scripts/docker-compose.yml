@@ -13,4 +13,5 @@ services:
       - 5000
     volumes:
       - ~/Configs/Game/Server/Player/appsettings.Production.json:/app/appsettings.Production.json
+      - ~/Configs/Game/Server/Player/App_Data/PersistenceStore.json:/app/App_Data/PersistenceStore.json
     network_mode: "bridge"
