@@ -39,7 +39,6 @@ module.exports = (env) => {
                 {
                     test: /\.scss$/,
                     use: isDevBuild ? ['style-loader', 'css-loader', "sass-loader"] : ExtractTextPlugin.extract([
-                        "style-loader", // creates style nodes from JS strings
                         "css-loader?minimize", // translates CSS into CommonJS
                         "sass-loader" // compiles Sass to CSS
                     ])

@@ -13,7 +13,6 @@ namespace EventHorizon.Game.Server.Player.State.Event.Handler
     {
         private static string FILE_DIRECTORY = "App_Data";
         private static string FILENAME = "App_Data/PersistenceStore.db";
-        private static bool ran = false;
 
         public void WriteToFile(string obj)
         {

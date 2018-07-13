@@ -16,11 +16,6 @@ namespace EventHorizon.Game.Server.Player.State.Event.Handler
     {
         private static string FILE_DIRECTORY = "App_Data";
         private static string FILENAME = "App_Data/PersistenceStore.json";
-        private static bool ran = false;
-
-        private static FileStream fileStreamOut;
-        private long nextPosition;
-        private static long currentRecordLocation;
 
         readonly ILogger _logger;
         readonly IPerformanceTracker _performanceTracker;
