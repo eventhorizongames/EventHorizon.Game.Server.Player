@@ -124,18 +124,15 @@ export class PlayerList extends React.Component<{}, IState> {
     private startInterval() {
         this.intervalHandler = setInterval(
             () =>
-                PlayerConnection.getAllPlayers().then(
-                    response =>
-                        response.length > this.state.playerList.length
-                            ? this.setState({
-                                  playerList: response,
-                                  currentPlayerPage: this.getCurrentPlayerPage(
-                                      response,
-                                      this.state.currentPage,
-                                      this.state.filter
-                                  )
-                              })
-                            : this.state
+                PlayerConnection.getAllPlayers().then(response =>
+                    this.setState({
+                        playerList: response,
+                        currentPlayerPage: this.getCurrentPlayerPage(
+                            response,
+                            this.state.currentPage,
+                            this.state.filter
+                        )
+                    })
                 ),
             3000
         );
