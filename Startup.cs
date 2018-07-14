@@ -103,31 +103,16 @@ namespace EventHorizon.Game.Server.Player
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
-                {
-                    HotModuleReplacement = true,
-                    ReactHotModuleReplacement = true
-                });
             }
 
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
 
-            app.UseStaticFiles();
             app.UseSignalR(routes =>
             {
                 routes.MapHub<PlayerBus>("/playerBus");
             });
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}");
-
-                routes.MapSpaFallbackRoute(
-                    name: "spa-fallback",
-                    defaults: new { controller = "Home", action = "Index" });
-            });
+            app.UseMvc();
         }
     }
 }

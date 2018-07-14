@@ -248,3 +248,4 @@ dist/
 appsettings.*.json
 
 data/*.json
+App_Data/*.json

@@ -1,9 +1,0 @@
-.player-container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-}
-
-.player-cell {
-    grid-column: span 6;
-    padding: 15px;
-}
