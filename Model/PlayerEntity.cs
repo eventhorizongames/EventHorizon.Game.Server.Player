@@ -10,13 +10,19 @@ namespace EventHorizon.Game.Server.Player.Model
         public string Id { get; set; }
         public string Name { get; set; }
         public string Locale { get; set; }
-        public PositionState Position { get; set; }
+        public TransformState Transform { get; set; }
+        public LocationState Location { get; set; }
         public object Data { get; set; }
 
-        public PlayerEntity(string id, PositionState positionState)
+        public PlayerEntity(
+            string id,
+            TransformState transform,
+            LocationState location
+        )
         {
             this.Id = id;
-            this.Position = positionState;
+            this.Transform = transform;
+            this.Location = location;
             this.Name = "";
             this.Locale = "";
 
