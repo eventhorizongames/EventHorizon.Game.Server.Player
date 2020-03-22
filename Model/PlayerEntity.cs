@@ -1,6 +1,3 @@
-using System;
-using System.Numerics;
-
 namespace EventHorizon.Game.Server.Player.Model
 {
     public struct PlayerEntity
