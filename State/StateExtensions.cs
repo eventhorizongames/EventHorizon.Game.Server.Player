@@ -28,7 +28,7 @@ namespace EventHorizon.Game.Server.Player.State
                 mediator.Publish(
                     new LoadPlayerStateEvent()
                 ).GetAwaiter().GetResult();
-                mediator.Publish(
+                mediator.Send(
                     new StartServerCommand()
                 ).GetAwaiter().GetResult();
             }

@@ -96,6 +96,7 @@
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseRouting();
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
