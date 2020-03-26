@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/bin/Debug/netcoreapp3.1/EventHorizon.Game.Server.Player.dll",
+            "program": "${workspaceFolder}/src/EventHorizon.Game.Server.Player/bin/Debug/netcoreapp3.1/EventHorizon.Game.Server.Player.dll",
             "args": [],
-            "cwd": "${workspaceFolder}",
+            "cwd": "${workspaceFolder}/src/EventHorizon.Game.Server.Player",
             "stopAtEntry": false,
             "externalConsole": false,
             "internalConsoleOptions": "openOnSessionStart",
@@ -34,9 +34,6 @@
                 "ASPNETCORE_ENVIRONMENT": "Development",
                 "ASPNETCORE_URLS": "http://localhost:5083",
                 "VIRTUAL_HOST": "http://localhost:5083"
-            },
-            "sourceFileMap": {
-                "/Views": "${workspaceFolder}/Views"
             }
         },
     ]

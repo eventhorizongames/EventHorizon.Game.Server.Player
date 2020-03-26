@@ -1,13 +1,12 @@
 ﻿namespace EventHorizon.Game.Server.Player
 {
-    using System;
     using System.Linq;
     using System.Net;
     using EventHorizon.Game.Server.Player.Bus;
     using EventHorizon.Game.Server.Player.Controllers;
-    using EventHorizon.Game.Server.Player.Performance;
-    using EventHorizon.Game.Server.Player.Performance.Impl;
     using EventHorizon.Game.Server.Player.State;
+    using EventHorizon.Performance;
+    using EventHorizon.Performance.Impl;
     using EventHorizon.TimerService;
     using MediatR;
     using Microsoft.AspNetCore.Builder;

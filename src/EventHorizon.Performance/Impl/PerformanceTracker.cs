@@ -1,9 +1,8 @@
-using EventHorizon.Game.Server.Player.Performance.Model;
-using Microsoft.AspNetCore.Hosting;
+using EventHorizon.Performance.Model;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace EventHorizon.Game.Server.Player.Performance.Impl
+namespace EventHorizon.Performance.Impl
 {
     public class PerformanceTracker : IPerformanceTracker
     {
@@ -17,7 +16,7 @@ namespace EventHorizon.Game.Server.Player.Performance.Impl
         }
         public ITrackerInstance Track(string trackerName)
         {
-            if (_configuration["DisablePerformanceTracker"] != null)
+            if (_configuration["PerformanceTracker"] == null)
             {
                 return EMPTY_TRACKER;
             }

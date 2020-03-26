@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using EventHorizon.Game.Server.Player.Model;
-using EventHorizon.Game.Server.Player.Performance;
+using EventHorizon.Performance;
 using MediatR;
 using Newtonsoft.Json;
 
