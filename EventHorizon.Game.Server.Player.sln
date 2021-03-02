@@ -1,19 +1,25 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{D40715F4-6948-43B0-8C40-3AEA8E2983CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHorizon.Game.Server.Player.Tests", "test\EventHorizon.Game.Server.Player.Tests\EventHorizon.Game.Server.Player.Tests.csproj", "{13CC4F14-5AED-4B6F-86F3-129113E6F71C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHorizon.Game.Server.Player.Tests", "test\EventHorizon.Game.Server.Player.Tests\EventHorizon.Game.Server.Player.Tests.csproj", "{13CC4F14-5AED-4B6F-86F3-129113E6F71C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{10FAA4A3-8E6D-4A0A-B6B7-155AA00026DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHorizon.TimerService", "src\EventHorizon.TimerService\EventHorizon.TimerService.csproj", "{EA7D0D4D-241D-498D-88AE-7851776360ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHorizon.TimerService", "src\EventHorizon.TimerService\EventHorizon.TimerService.csproj", "{EA7D0D4D-241D-498D-88AE-7851776360ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHorizon.Performance", "src\EventHorizon.Performance\EventHorizon.Performance.csproj", "{D82B31D1-EDE8-4B51-9B39-78686EE93AFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHorizon.Performance", "src\EventHorizon.Performance\EventHorizon.Performance.csproj", "{D82B31D1-EDE8-4B51-9B39-78686EE93AFF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventHorizon.Game.Server.Player", "src\EventHorizon.Game.Server.Player\EventHorizon.Game.Server.Player.csproj", "{E7338781-F6AA-4DB9-8D59-1190FF7048A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHorizon.Game.Server.Player", "src\EventHorizon.Game.Server.Player\EventHorizon.Game.Server.Player.csproj", "{E7338781-F6AA-4DB9-8D59-1190FF7048A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1984092-1660-4011-BC53-ECB988E4D073}"
+	ProjectSection(SolutionItems) = preProject
+		azure-pipelines.yml = azure-pipelines.yml
+		Dockerfile = Dockerfile
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,9 +29,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{13CC4F14-5AED-4B6F-86F3-129113E6F71C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -77,10 +80,16 @@ Global
 		{E7338781-F6AA-4DB9-8D59-1190FF7048A9}.Release|x86.ActiveCfg = Release|Any CPU
 		{E7338781-F6AA-4DB9-8D59-1190FF7048A9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{13CC4F14-5AED-4B6F-86F3-129113E6F71C} = {D40715F4-6948-43B0-8C40-3AEA8E2983CF}
 		{EA7D0D4D-241D-498D-88AE-7851776360ED} = {10FAA4A3-8E6D-4A0A-B6B7-155AA00026DE}
 		{D82B31D1-EDE8-4B51-9B39-78686EE93AFF} = {10FAA4A3-8E6D-4A0A-B6B7-155AA00026DE}
 		{E7338781-F6AA-4DB9-8D59-1190FF7048A9} = {10FAA4A3-8E6D-4A0A-B6B7-155AA00026DE}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B47E11A-1C38-49A8-8394-6BA7B3EFF994}
 	EndGlobalSection
 EndGlobal
