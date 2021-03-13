@@ -25,6 +25,7 @@ namespace EventHorizon.Game.Server.Player
                         .Enrich.WithProperty("EnvironmentName", ctx.HostingEnvironment.EnvironmentName)
                         .Enrich.WithProperty("PlatformId", ctx.Configuration["OwnerDetails:PlatformId"])
                         .Enrich.WithProperty("ServiceName", "Player")
+                        .Enrich.WithProperty("ApplicationVersion", ctx.Configuration["APPLICATION_VERSION"])
                         .ReadFrom.Configuration(ctx.Configuration)
                         .ConfigureElasticsearchLogging(ctx)
                     );
